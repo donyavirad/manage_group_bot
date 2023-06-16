@@ -8,8 +8,9 @@ bot.start((ctx)=> {
 
 
 module.exports = async (request, response) => {
+    console.log(request.body);
     try {
-        await bot.handleUpdate(JSON.parse(request.body));
+        await bot.handleUpdate(request.body, response);
         response.json( { statusCode: 200, body: "" });
     } catch (e) {
         console.error("error in handler:", e);
